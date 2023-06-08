@@ -5,6 +5,7 @@
       :key="todo.id"
       :todo="todo"
       @toggle-todo="toggleTodo"
+      @remove-todo="removeTodo"
     />
   </ul>
 </template>
@@ -24,9 +25,9 @@ export default defineComponent({
   data(): State {
     return {
       todos: [
-        { id: 1, text: "Learn the basics of Typescript", completed: true },
-        { id: 2, text: "Subscribe to the channel", completed: false },
-        { id: 3, text: "Learn the basics of Typescript", completed: false },
+        { id: 0, text: "Learn the basics of Typescript", completed: true },
+        { id: 1, text: "Subscribe to the channel", completed: false },
+        { id: 2, text: "Learn the basics of Typescript", completed: false },
       ],
     };
   },
@@ -37,6 +38,10 @@ export default defineComponent({
       if (targetTodo) {
         targetTodo.completed = !targetTodo.completed;
       }
+    },
+    removeTodo(id: number) {
+       const todos = this.todos.filter(todo => todo.id !== id)
+       this.todos = todos
     },
   },
 });
