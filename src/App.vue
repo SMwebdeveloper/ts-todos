@@ -13,13 +13,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
-import AppHeader from "@/components/AppHeader"
-import AppFilters from "@/components/AppFilters"
-import AppTodoList from "@/components/AppTodoList"
-import AppAddTodo from "@/components/AppAddTodo"
-import AppFooter from "@/components/AppFooter"
+import AppHeader from "./components/AppHeader.vue"
+import AppFilters from "./components/AppFilters.vue"
+import AppTodoList from "./components/AppTodoList.vue"
+import AppAddTodo from "./components/AppAddTodo.vue"
+import AppFooter from "./components/AppFooter.vue"
 export default defineComponent({
   components:{
     AppHeader,
