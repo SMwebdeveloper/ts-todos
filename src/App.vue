@@ -13,7 +13,7 @@
       <AppAddTodo @add-todo="addTodo" />
     </main>
 
-    <AppFooter />
+    <AppFooter :stats="stats"/>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ import AppHeader from "./components/AppHeader.vue";
 import AppFilters from "./components/AppFilters.vue";
 import AppTodoList from "./components/AppTodoList.vue";
 import AppAddTodo from "./components/AppAddTodo.vue";
-import AppFooter from "./components/AppFooter.vue";
+import AppFooter, { Stats } from "./components/AppFooter.vue";
 import { Todo } from "./types/Todo";
 import { Filter } from "./types/Filters";
 
@@ -61,6 +61,12 @@ export default defineComponent({
           return this.todos;
       }
     },
+    stats(): Stats {
+      return {
+        active: this.todos.filter(todo => !todo.completed).length,
+        done: this.todos.filter(todo => todo.completed).length
+      }
+    }
   },
   methods: {
     addTodo(todo: Todo) {
